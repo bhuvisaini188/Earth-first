@@ -1,1 +1,464 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Quiz | Our Planet</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7f1;
+    color: #203b2c;
+}
+
+nav {
+    background: #123c2b;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    color: white;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 8px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #b9dda7;
+}
+
+header {
+    text-align: center;
+    padding: 65px 20px 45px;
+    background: #e3eddf;
+}
+
+header h1 {
+    font-size: 42px;
+    margin-bottom: 12px;
+    color: #123c2b;
+}
+
+header p {
+    font-size: 17px;
+    color: #526b59;
+}
+
+.container {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.quiz-box {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+}
+
+.progress {
+    color: #66816b;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.question {
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 22px;
+    line-height: 1.4;
+}
+
+.option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 15px;
+    margin: 12px 0;
+    border: 2px solid #dce6d9;
+    border-radius: 9px;
+    background: #fbfcf9;
+    font-size: 16px;
+    cursor: pointer;
+    color: #203b2c;
+    transition: 0.2s;
+}
+
+.option:hover:not(:disabled) {
+    border-color: #54845c;
+    background: #eef5eb;
+}
+
+.option:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+.correct {
+    background: #e0f2df;
+    border-color: #4b9254;
+}
+
+.wrong {
+    background: #fbe7e4;
+    border-color: #cf7165;
+}
+
+.feedback {
+    margin-top: 18px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+button.next, button.restart {
+    background: #286348;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button.next:hover, button.restart:hover {
+    background: #123c2b;
+}
+
+.result {
+    text-align: center;
+    padding: 30px 10px;
+}
+
+.result h2 {
+    font-size: 32px;
+    color: #286348;
+}
+
+.result p {
+    font-size: 19px;
+    line-height: 1.6;
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    text-align: center;
+    background: #123c2b;
+    color: white;
+    padding: 25px;
+    margin-top: 60px;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 32px;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .quiz-box {
+        padding: 20px;
+    }
+
+    .question {
+        font-size: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">OUR PLANET 🌍</div>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="understanding.html">Understanding</a>
+        <a href="future.html">Future</a>
+        <a href="world.html">Around the World</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="about.html">About Us</a>
+        <a href="sources.html">Sources</a>
+    </div>
+</nav>
+
+<header>
+    <h1>Test Your Climate Knowledge 🌱</h1>
+    <p>How much do you really know about our changing planet?</p>
+</header>
+
+<div class="container">
+    <div class="quiz-box">
+
+        <div id="quiz">
+            <div class="progress" id="progress"></div>
+            <div class="question" id="question"></div>
+            <div id="options"></div>
+            <div class="feedback" id="feedback"></div>
+            <button class="next hidden" id="next" onclick="nextQuestion()">
+                Next Question →
+            </button>
+        </div>
+
+        <div class="result hidden" id="result">
+            <h2>Quiz Completed! 🌍</h2>
+            <p id="score"></p>
+            <p id="message"></p>
+            <button class="restart" onclick="restartQuiz()">
+                Try Again
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <p>OUR PLANET. OUR FUTURE. OUR CHOICE.</p>
+    <p>Small actions can create a big difference.</p>
+</footer>
+
+<script>
+const questions = [
+    {
+        question: "1. What is the main cause of current global warming?",
+        options: [
+            "The movement of ocean waves",
+            "Human activities that release greenhouse gases",
+            "The changing seasons",
+            "The phases of the Moon"
+        ],
+        answer: 1,
+        explanation: "Burning fossil fuels and other human activities release greenhouse gases that trap extra heat."
+    },
+    {
+        question: "2. Which of these is a greenhouse gas?",
+        options: [
+            "Oxygen",
+            "Nitrogen",
+            "Carbon dioxide",
+            "Helium"
+        ],
+        answer: 2,
+        explanation: "Carbon dioxide is a greenhouse gas that absorbs and re-emits heat in Earth's atmosphere."
+    },
+    {
+        question: "3. What is deforestation?",
+        options: [
+            "Planting more trees",
+            "The large-scale removal of forests",
+            "Protecting wildlife",
+            "Cleaning rivers"
+        ],
+        answer: 1,
+        explanation: "Deforestation is the removal of forests, often to make space for farming, buildings or other activities."
+    },
+    {
+        question: "4. Which energy source is renewable?",
+        options: [
+            "Coal",
+            "Petroleum",
+            "Natural gas",
+            "Solar energy"
+        ],
+        answer: 3,
+        explanation: "Solar energy comes from sunlight and is naturally replenished."
+    },
+    {
+        question: "5. What is one effect of rising global temperatures?",
+        options: [
+            "Rising sea levels",
+            "The disappearance of gravity",
+            "The Moon moving closer to Earth",
+            "All storms stopping"
+        ],
+        answer: 0,
+        explanation: "Rising temperatures contribute to sea-level rise through melting land ice and the expansion of warmer seawater."
+    },
+    {
+        question: "6. What does the term carbon footprint mean?",
+        options: [
+            "The size of a person's shoes",
+            "The amount of carbon dioxide and other greenhouse gases linked to an activity",
+            "The number of trees in a forest",
+            "The amount of rainfall in an area"
+        ],
+        answer: 1,
+        explanation: "A carbon footprint measures the greenhouse gas emissions associated with a person, product or activity."
+    },
+    {
+        question: "7. Which action can help reduce climate change?",
+        options: [
+            "Wasting electricity",
+            "Burning more coal",
+            "Using renewable energy",
+            "Cutting down more forests"
+        ],
+        answer: 2,
+        explanation: "Renewable energy sources such as wind and solar can reduce reliance on fossil fuels."
+    },
+    {
+        question: "8. Why are forests important in the fight against climate change?",
+        options: [
+            "They absorb carbon dioxide",
+            "They create plastic",
+            "They increase air pollution",
+            "They stop all rainfall"
+        ],
+        answer: 0,
+        explanation: "Trees absorb carbon dioxide during photosynthesis and store carbon."
+    },
+    {
+        question: "9. What is climate change?",
+        options: [
+            "A change in the weather during one afternoon",
+            "Long-term changes in temperatures and weather patterns",
+            "Only the arrival of winter",
+            "A change in the time of sunrise"
+        ],
+        answer: 1,
+        explanation: "Climate change refers to long-term shifts in temperatures and weather patterns."
+    },
+    {
+        question: "10. What is one way to reduce textile waste?",
+        options: [
+            "Throwing away clothes after one use",
+            "Buying more clothes than needed",
+            "Reusing or donating clothes",
+            "Burning unwanted clothes"
+        ],
+        answer: 2,
+        explanation: "Reusing and donating clothes helps keep textiles in use for longer and reduces waste."
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+function showQuestion() {
+    answered = false;
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("progress").textContent =
+        "Question " + (currentQuestion + 1) + " of " + questions.length;
+
+    document.getElementById("question").textContent = q.question;
+    document.getElementById("feedback").textContent = "";
+    document.getElementById("next").classList.add("hidden");
+
+    const optionsContainer = document.getElementById("options");
+    optionsContainer.innerHTML = "";
+
+    q.options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.className = "option";
+        button.textContent = option;
+        button.onclick = () => checkAnswer(index, button);
+        optionsContainer.appendChild(button);
+    });
+}
+
+function checkAnswer(selected, selectedButton) {
+    if (answered) return;
+
+    answered = true;
+
+    const q = questions[currentQuestion];
+    const buttons = document.querySelectorAll(".option");
+
+    buttons.forEach(button => button.disabled = true);
+
+    if (selected === q.answer) {
+        score++;
+        selectedButton.classList.add("correct");
+        document.getElementById("feedback").textContent =
+            "✓ Correct! " + q.explanation;
+    } else {
+        selectedButton.classList.add("wrong");
+        buttons[q.answer].classList.add("correct");
+        document.getElementById("feedback").textContent =
+            "Not quite! " + q.explanation;
+    }
+
+    const nextButton = document.getElementById("next");
+    nextButton.textContent =
+        currentQuestion === questions.length - 1
+        ? "See My Results →"
+        : "Next Question →";
+
+    nextButton.classList.remove("hidden");
+}
+
+function nextQuestion() {
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+        showQuestion();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+    document.getElementById("quiz").classList.add("hidden");
+    document.getElementById("result").classList.remove("hidden");
+
+    document.getElementById("score").textContent =
+        "You scored " + score + " out of " + questions.length + "!";
+
+    let message;
+
+    if (score === 10) {
+        message = "Outstanding! You're a climate champion! 🌍";
+    } else if (score >= 7) {
+        message = "Great work! You have a strong understanding of climate change.";
+    } else if (score >= 4) {
+        message = "Good effort! Keep learning and you'll get even better.";
+    } else {
+        message = "Every expert starts somewhere. Explore the website and try again!";
+    }
+
+    document.getElementById("message").textContent = message;
+}
+
+function restartQuiz() {
+    currentQuestion = 0;
+    score = 0;
+
+    document.getElementById("quiz").classList.remove("hidden");
+    document.getElementById("result").classList.add("hidden");
+
+    showQuestion();
+}
+
+showQuestion();
+</script>
+
+</body>
+</html>
+
