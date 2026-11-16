@@ -1,1 +1,318 @@
-index.html 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Climate Project | Our Planet, Our Future</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7f1;
+      color: #183b2b;
+    }
+
+    header {
+      background: #123c2b;
+      color: white;
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #a9d69a;
+    }
+
+    .hero {
+      min-height: 570px;
+      padding: 85px 8%;
+      background: linear-gradient(120deg, #123c2b, #286348);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .eyebrow {
+      color: #b9dda7;
+      letter-spacing: 3px;
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.08;
+      margin-bottom: 25px;
+    }
+
+    .hero-text p {
+      color: #e0ebdf;
+      font-size: 17px;
+      line-height: 1.8;
+      max-width: 510px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #c4dfae;
+      color: #173c2a;
+      padding: 15px 25px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+
+    .button:hover {
+      background: white;
+    }
+
+    .planet {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 30%, #a8d89c, #428d61 42%, #164c37 75%);
+      box-shadow: 0 0 70px #a4d9a055;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 105px;
+      flex-shrink: 0;
+      margin: 0 auto;
+    }
+
+    .intro {
+      text-align: center;
+      padding: 85px 8%;
+    }
+
+    .intro h2 {
+      font-size: 34px;
+      margin-bottom: 20px;
+    }
+
+    .intro p {
+      max-width: 750px;
+      margin: auto;
+      color: #647568;
+      line-height: 1.8;
+    }
+
+    .explore {
+      padding: 50px 8% 90px;
+    }
+
+    .explore h2 {
+      text-align: center;
+      font-size: 34px;
+      margin-bottom: 40px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 12px;
+      border: 1px solid #e2e9df;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card .icon {
+      font-size: 35px;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: #718074;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .card a {
+      display: inline-block;
+      color: #286348;
+      font-weight: bold;
+      margin-top: 20px;
+      text-decoration: none;
+    }
+
+    footer {
+      background: #123c2b;
+      color: #dce8dc;
+      text-align: center;
+      padding: 30px 15px;
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    @media (max-width: 650px) {
+      header {
+        justify-content: center;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .hero {
+        text-align: center;
+        justify-content: center;
+        padding: 65px 7%;
+      }
+
+      .planet {
+        width: 190px;
+        height: 190px;
+        font-size: 80px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">🌍 THE CLIMATE PROJECT</div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="understanding.html">The Science</a>
+      <a href="future.html">Earth's Future</a>
+      <a href="world.html">Our World</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="about.html">About</a>
+      <a href="sources.html">Sources</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <div class="eyebrow">UNDERSTAND. EXPLORE. ACT.</div>
+
+      <h1>OUR PLANET.<br>OUR FUTURE.<br>OUR CHOICE.</h1>
+
+      <p>
+        Climate change is shaping the future of our planet.
+        Discover the science behind it, explore what our world
+        could look like in the years ahead, and learn how we
+        can make a difference.
+      </p>
+
+      <a href="understanding.html" class="button">
+        EXPLORE THE PROJECT →
+      </a>
+    </div>
+
+    <div class="planet">🌍</div>
+  </section>
+
+  <section class="intro">
+    <h2>A Changing Planet</h2>
+
+    <p>
+      From rising global temperatures to melting glaciers and
+      changing ecosystems, our planet is experiencing major
+      changes. Understanding these changes is the first step
+      towards creating a more sustainable future.
+    </p>
+  </section>
+
+  <section class="explore">
+    <h2>EXPLORE THE PROJECT</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">🔬</div>
+        <h3>Understand Climate Change</h3>
+        <p>Discover what climate change is, what causes it,
+        and how it affects our planet.</p>
+        <a href="understanding.html">Explore →</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">🌎</div>
+        <h3>Earth in the Future</h3>
+        <p>Explore different possible futures for Earth
+        through an interactive experience.</p>
+        <a href="future.html">Explore →</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">🗺️</div>
+        <h3>Our Changing World</h3>
+        <p>Discover how climate change affects different
+        countries and communities.</p>
+        <a href="world.html">Explore →</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">🧠</div>
+        <h3>Test Your Knowledge</h3>
+        <p>Think you know about climate change?
+        Challenge yourself with our quiz.</p>
+        <a href="quiz.html">Take the quiz →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>THE CLIMATE PROJECT</p>
+    <p>Our planet. Our future. Our choice.</p>
+    <p>Learn more. Understand more. Do more.</p>
+  </footer>
+
+</body>
+</html>
