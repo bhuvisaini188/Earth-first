@@ -1,1 +1,7 @@
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#286348"/>
+  <path d="M10 25 Q20 10 35 15 Q48 18 54 28 Q40 25 32 35 Q20 40 10 25Z" fill="#8BCB75"/>
+  <path d="M12 42 Q25 30 38 36 Q48 39 52 46 Q38 44 30 52 Q18 53 12 42Z" fill="#65A9D8"/>
+  <path d="M22 43 Q30 30 44 20" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
