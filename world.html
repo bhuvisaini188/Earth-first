@@ -1,1 +1,785 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Change Around the World | The Climate Project</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f7f1;
+  color: #183b2b;
+  line-height: 1.7;
+}
+
+header {
+  background: #123c2b;
+  color: white;
+  padding: 22px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+nav a:hover {
+  color: #b9dda7;
+}
+
+.hero {
+  background: linear-gradient(120deg, #123c2b, #286348);
+  color: white;
+  padding: 85px 8%;
+  text-align: center;
+}
+
+.hero small {
+  color: #b9dda7;
+  letter-spacing: 3px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 6vw, 65px);
+  margin: 15px 0;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: auto;
+  color: #e0ebdf;
+}
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 25px;
+}
+
+.section-label {
+  color: #548466;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-size: 32px;
+  margin: 10px 0 15px;
+}
+
+.intro {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 55px;
+}
+
+.intro p {
+  color: #647568;
+}
+
+.explorer {
+  margin-bottom: 65px;
+}
+
+.explorer-description {
+  color: #647568;
+}
+
+.region-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.region-button {
+  padding: 22px 12px;
+  border: 2px solid #dce6d9;
+  background: white;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #183b2b;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.region-button:hover {
+  border-color: #548466;
+  transform: translateY(-3px);
+}
+
+.region-button.active {
+  background: #e3eddf;
+  border-color: #286348;
+  font-weight: bold;
+}
+
+.region-button span {
+  display: block;
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.region-result {
+  background: white;
+  padding: 35px;
+  border-radius: 13px;
+  border: 1px solid #e2e9df;
+}
+
+.region-result h3 {
+  font-size: 27px;
+  margin: 10px 0;
+}
+
+.region-result p {
+  color: #647568;
+}
+
+.impact-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.impact {
+  background: #f5f7f1;
+  padding: 20px;
+  border-radius: 9px;
+}
+
+.impact h4 {
+  color: #286348;
+  margin-bottom: 8px;
+}
+
+.impact p {
+  font-size: 14px;
+}
+
+.tag {
+  display: inline-block;
+  background: #e5eddf;
+  color: #286348;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.info-section {
+  margin: 65px 0;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.info-card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid #e2e9df;
+}
+
+.info-card .icon {
+  font-size: 35px;
+  margin-bottom: 12px;
+}
+
+.info-card h3 {
+  margin-bottom: 10px;
+}
+
+.info-card p {
+  color: #647568;
+  font-size: 14px;
+}
+
+.highlight {
+  background: #e5eddf;
+  border-left: 5px solid #548466;
+  padding: 25px;
+  border-radius: 5px;
+  margin-top: 25px;
+}
+
+.sources {
+  background: white;
+  padding: 28px;
+  border-radius: 10px;
+  border: 1px solid #e2e9df;
+}
+
+.sources a {
+  color: #286348;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.sources a:hover {
+  text-decoration: underline;
+}
+
+.sources li {
+  margin: 12px 0;
+  color: #647568;
+}
+
+footer {
+  background: #123c2b;
+  color: white;
+  text-align: center;
+  padding: 30px;
+  font-size: 13px;
+}
+
+footer p {
+  color: #dce8dc;
+}
+
+@media(max-width: 650px) {
+  header {
+    justify-content: center;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .region-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .impact-list {
+    grid-template-columns: 1fr;
+  }
+
+  .region-result {
+    padding: 22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🌍 THE CLIMATE PROJECT</div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="understanding.html">The Science</a>
+    <a href="future.html">Earth's Future</a>
+    <a href="world.html">Our World</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="about.html">About</a>
+    <a href="sources.html">Sources</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <small>ONE PLANET. DIFFERENT CHALLENGES.</small>
+  <h1>Climate Change Around the World</h1>
+  <p>
+    Climate change affects every part of our planet,
+    but its impacts are not the same everywhere.
+    Explore different regions and discover the challenges
+    faced by people, wildlife and ecosystems.
+  </p>
+</section>
+
+<main>
+
+<section class="intro">
+  <div class="section-label">EXPLORE OUR PLANET</div>
+  <h2>Climate Change Has No Borders</h2>
+  <p>
+    From melting ice in the Arctic to changing rainfall
+    patterns in Africa, climate change affects countries
+    and communities in different ways.
+    Select a region below to explore its climate challenges.
+  </p>
+</section>
+
+<section class="explorer">
+
+  <div class="section-label">01 — INTERACTIVE REGION EXPLORER</div>
+  <h2>Choose a Region</h2>
+  <p class="explorer-description">
+    Click on a region to discover some of the climate
+    impacts it faces.
+  </p>
+
+  <div class="region-buttons">
+
+    <button class="region-button active"
+      data-region="india" aria-pressed="true">
+      <span>🇮🇳</span>
+      India
+    </button>
+
+    <button class="region-button"
+      data-region="africa" aria-pressed="false">
+      <span>🌍</span>
+      Africa
+    </button>
+
+    <button class="region-button"
+      data-region="europe" aria-pressed="false">
+      <span>🇪🇺</span>
+      Europe
+    </button>
+
+    <button class="region-button"
+      data-region="arctic" aria-pressed="false">
+      <span>🧊</span>
+      Arctic
+    </button>
+
+    <button class="region-button"
+      data-region="pacific" aria-pressed="false">
+      <span>🏝️</span>
+      Pacific Islands
+    </button>
+
+    <button class="region-button"
+      data-region="america" aria-pressed="false">
+      <span>🌎</span>
+      North America
+    </button>
+
+  </div>
+
+  <div class="region-result" aria-live="polite">
+
+    <span class="tag" id="region-tag">SOUTH ASIA</span>
+
+    <h3 id="region-title">India 🇮🇳</h3>
+
+    <p id="region-description">
+      India faces several climate-related challenges,
+      including extreme heat, changing monsoon patterns,
+      flooding and pressure on water resources.
+    </p>
+
+    <div class="impact-list">
+
+      <div class="impact">
+        <h4>🌡️ Temperature</h4>
+        <p id="temperature">
+          Extreme heat can affect people's health,
+          outdoor work and everyday life.
+        </p>
+      </div>
+
+      <div class="impact">
+        <h4>🌧️ Rainfall</h4>
+        <p id="rainfall">
+          Changes in monsoon rainfall can increase
+          challenges for farming and water management.
+        </p>
+      </div>
+
+      <div class="impact">
+        <h4>🌊 Water and Coasts</h4>
+        <p id="water">
+          Coastal communities face risks from rising
+          sea levels and coastal flooding.
+        </p>
+      </div>
+
+      <div class="impact">
+        <h4>🌾 Agriculture</h4>
+        <p id="agriculture">
+          Heat and changing rainfall can affect crops
+          and agricultural livelihoods.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="info-section">
+
+  <div class="section-label">02 — UNDERSTANDING THE IMPACTS</div>
+  <h2>What Changes Around the World?</h2>
+
+  <p>
+    Although climate impacts differ between regions,
+    several environmental changes are being observed
+    across the planet.
+  </p>
+
+  <div class="info-grid">
+
+    <div class="info-card">
+      <div class="icon">🔥</div>
+      <h3>Extreme Heat</h3>
+      <p>
+        Rising temperatures increase the likelihood
+        and intensity of many heat extremes.
+      </p>
+    </div>
+
+    <div class="info-card">
+      <div class="icon">🧊</div>
+      <h3>Melting Glaciers</h3>
+      <p>
+        Glaciers are losing ice in many mountain
+        regions, affecting water systems and
+        contributing to sea-level rise.
+      </p>
+    </div>
+
+    <div class="info-card">
+      <div class="icon">🌊</div>
+      <h3>Rising Sea Levels</h3>
+      <p>
+        Rising seas increase coastal flooding
+        and erosion risks for many communities.
+      </p>
+    </div>
+
+    <div class="info-card">
+      <div class="icon">🌳</div>
+      <h3>Changing Ecosystems</h3>
+      <p>
+        Changing temperatures and rainfall can
+        affect habitats, biodiversity and wildlife.
+      </p>
+    </div>
+
+    <div class="info-card">
+      <div class="icon">🌧️</div>
+      <h3>Changing Rainfall</h3>
+      <p>
+        Some areas face increasing heavy rainfall,
+        while others experience greater drought risks.
+      </p>
+    </div>
+
+    <div class="info-card">
+      <div class="icon">🌾</div>
+      <h3>Food Security</h3>
+      <p>
+        Climate impacts can affect food production,
+        farming livelihoods and food availability.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="info-section">
+
+  <div class="section-label">03 — A GLOBAL CHALLENGE</div>
+  <h2>Why Are Some Regions More Vulnerable?</h2>
+
+  <p>
+    Not every country has the same resources to prepare
+    for or respond to climate change. Vulnerability depends
+    on several factors.
+  </p>
+
+  <div class="info-grid">
+
+    <div class="info-card">
+      <div class="icon">🏘️</div>
+      <h3>Location</h3>
+      <p>
+        Coastal areas, dry regions and places exposed
+        to extreme weather can face particular risks.
+      </p>
+    </div>
+
+    <div class="info-card">
+      <div class="icon">💧</div>
+      <h3>Natural Resources</h3>
+      <p>
+        Communities that depend heavily on rainfall,
+        farming or natural ecosystems can be more exposed
+        to climate changes.
+      </p>
+    </div>
+
+    <div class="info-card">
+      <div class="icon">🏥</div>
+      <h3>Infrastructure</h3>
+      <p>
+        Access to healthcare, safe housing, transport
+        and early-warning systems can influence
+        how communities respond.
+      </p>
+    </div>
+
+    <div class="info-card">
+      <div class="icon">🤝</div>
+      <h3>Resources and Support</h3>
+      <p>
+        Financial resources, technology and planning
+        help communities prepare for climate impacts.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="highlight">
+    <h3>One important fact</h3>
+    Climate change is a global issue, but its impacts
+    are not distributed equally. Some communities
+    experience greater risks despite contributing
+    relatively little to historical greenhouse gas emissions.
+  </div>
+
+</section>
+
+<section class="info-section">
+
+  <div class="section-label">04 — LEARN FROM SCIENCE</div>
+  <h2>Explore Trusted Climate Research</h2>
+
+  <p>
+    Climate research helps us understand how different
+    parts of the world are changing and what can be done
+    to prepare for the future.
+  </p>
+
+  <div class="sources">
+    <ul>
+      <li>
+        <a href="https://www.ipcc.ch/report/ar6/wg2/"
+           target="_blank" rel="noopener noreferrer">
+          IPCC — Climate Change 2022: Impacts, Adaptation and Vulnerability
+        </a>
+        <p>Scientific research on climate impacts around the world.</p>
+      </li>
+
+      <li>
+        <a href="https://climate.nasa.gov/"
+           target="_blank" rel="noopener noreferrer">
+          NASA Climate Change
+        </a>
+        <p>Explore climate science, observations and global changes.</p>
+      </li>
+
+      <li>
+        <a href="https://wmo.int/"
+           target="_blank" rel="noopener noreferrer">
+          World Meteorological Organization
+        </a>
+        <p>Global climate reports and information about weather and climate.</p>
+      </li>
+
+      <li>
+        <a href="https://www.worldbank.org/en/topic/climatechange"
+           target="_blank" rel="noopener noreferrer">
+          World Bank — Climate Change
+        </a>
+        <p>Explore climate risks, development and adaptation.</p>
+      </li>
+    </ul>
+  </div>
+
+</section>
+
+<section class="highlight">
+  <h2>One Planet, One Shared Future</h2>
+  <p>
+    Climate change connects us all. Understanding how
+    it affects different regions is an important step
+    towards creating solutions that protect people,
+    nature and future generations.
+  </p>
+</section>
+
+</main>
+
+<footer>
+  <p><strong>THE CLIMATE PROJECT</strong></p>
+  <p>Our planet. Our future. Our choice.</p>
+  <p><a href="index.html" style="color:#b9dda7;">Back to Home</a></p>
+</footer>
+
+<script>
+
+const regions = {
+
+  india: {
+    tag: "SOUTH ASIA",
+    title: "India 🇮🇳",
+    description:
+      "India faces several climate-related challenges, including extreme heat, changing monsoon patterns, flooding and pressure on water resources.",
+    temperature:
+      "Extreme heat can affect people's health, outdoor work and everyday life.",
+    rainfall:
+      "Changes in monsoon rainfall can increase challenges for farming and water management.",
+    water:
+      "Coastal communities face risks from rising sea levels and coastal flooding.",
+    agriculture:
+      "Heat and changing rainfall can affect crops and agricultural livelihoods."
+  },
+
+  africa: {
+    tag: "AFRICA",
+    title: "Africa 🌍",
+    description:
+      "Many African communities are vulnerable to climate change, particularly because of their dependence on agriculture and climate-sensitive natural resources.",
+    temperature:
+      "Rising temperatures increase heat stress and can affect human health and livestock.",
+    rainfall:
+      "Changing rainfall patterns can increase drought risks in some regions and flooding in others.",
+    water:
+      "Water availability can become less reliable in areas already experiencing water stress.",
+    agriculture:
+      "Changes in rainfall and extreme heat can affect crops, food production and farming livelihoods."
+  },
+
+  europe: {
+    tag: "EUROPE",
+    title: "Europe 🇪🇺",
+    description:
+      "Europe is experiencing climate impacts including increasing heat extremes, changing rainfall patterns, wildfires and coastal risks.",
+    temperature:
+      "Heatwaves are becoming more frequent and intense in many European regions.",
+    rainfall:
+      "Some areas face heavier rainfall and flooding, while others experience drought.",
+    water:
+      "Coastal communities face increasing risks from sea-level rise and flooding.",
+    agriculture:
+      "Heat, drought and changing growing conditions can affect farming and food production."
+  },
+
+  arctic: {
+    tag: "POLAR REGION",
+    title: "The Arctic 🧊",
+    description:
+      "The Arctic is warming much faster than the global average, causing major changes to its ice, landscapes, wildlife and communities.",
+    temperature:
+      "The Arctic has experienced particularly rapid warming.",
+    rainfall:
+      "Changes in snowfall, rainfall and seasonal patterns affect Arctic environments.",
+    water:
+      "Sea ice is declining, changing ocean conditions and coastal environments.",
+    agriculture:
+      "Changes in habitats and food availability affect wildlife and communities that depend on Arctic ecosystems."
+  },
+
+  pacific: {
+    tag: "PACIFIC OCEAN",
+    title: "Pacific Islands 🏝️",
+    description:
+      "Many Pacific island communities are especially exposed to rising sea levels, coastal flooding and changing ocean conditions.",
+    temperature:
+      "Increasing temperatures can affect communities, ecosystems and marine environments.",
+    rainfall:
+      "Changing rainfall patterns can create challenges for freshwater supplies.",
+    water:
+      "Rising sea levels increase coastal flooding, erosion and saltwater intrusion risks.",
+    agriculture:
+      "Saltwater entering freshwater and farmland can threaten crops and local food supplies."
+  },
+
+  america: {
+    tag: "NORTH AMERICA",
+    title: "North America 🌎",
+    description:
+      "North America experiences a wide range of climate impacts, including extreme heat, wildfires, droughts, flooding and changing ecosystems.",
+    temperature:
+      "Many areas experience more frequent and intense heat extremes.",
+    rainfall:
+      "Some regions face heavier rainfall and flooding, while others experience prolonged drought.",
+    water:
+      "Coastal communities face sea-level rise, erosion and flooding risks.",
+    agriculture:
+      "Heat, drought and changing growing seasons can affect farming and food production."
+  }
+
+};
+
+const buttons = document.querySelectorAll(".region-button");
+
+function selectRegion(name) {
+
+  const region = regions[name];
+
+  document.getElementById("region-tag").textContent =
+    region.tag;
+
+  document.getElementById("region-title").textContent =
+    region.title;
+
+  document.getElementById("region-description").textContent =
+    region.description;
+
+  document.getElementById("temperature").textContent =
+    region.temperature;
+
+  document.getElementById("rainfall").textContent =
+    region.rainfall;
+
+  document.getElementById("water").textContent =
+    region.water;
+
+  document.getElementById("agriculture").textContent =
+    region.agriculture;
+
+  buttons.forEach(button => {
+
+    const selected = button.dataset.region === name;
+
+    button.classList.toggle("active", selected);
+
+    button.setAttribute("aria-pressed", selected);
+
+  });
+
+}
+
+buttons.forEach(button => {
+
+  button.addEventListener("click", () => {
+    selectRegion(button.dataset.region);
+  });
+
+});
+
+</script>
+
+</body>
+</html>
+
