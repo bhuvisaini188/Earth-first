@@ -1,1 +1,655 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earth in the Future | The Climate Project</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f7f1;
+  color: #183b2b;
+  line-height: 1.7;
+}
+
+header {
+  background: #123c2b;
+  color: white;
+  padding: 22px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+nav a:hover {
+  color: #b9dda7;
+}
+
+.hero {
+  background: linear-gradient(120deg, #123c2b, #286348);
+  color: white;
+  padding: 80px 8%;
+  text-align: center;
+}
+
+.hero small {
+  color: #b9dda7;
+  letter-spacing: 3px;
+}
+
+.hero h1 {
+  font-size: clamp(40px, 6vw, 65px);
+  margin: 15px 0;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: auto;
+  color: #e0ebdf;
+}
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 25px;
+}
+
+.section-label {
+  color: #548466;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-size: 32px;
+  margin: 10px 0 15px;
+}
+
+.intro {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 55px;
+}
+
+.intro p {
+  color: #647568;
+}
+
+.scenario-section {
+  margin-bottom: 60px;
+}
+
+.scenario-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.scenario-button {
+  padding: 20px 12px;
+  border: 2px solid #dce6d9;
+  background: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #183b2b;
+  transition: 0.2s;
+}
+
+.scenario-button:hover {
+  border-color: #548466;
+  transform: translateY(-3px);
+}
+
+.scenario-button.active {
+  background: #e3eddf;
+  border-color: #286348;
+  font-weight: bold;
+}
+
+.scenario-button span {
+  display: block;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.result {
+  background: white;
+  border-radius: 14px;
+  padding: 35px;
+  border: 1px solid #e2e9df;
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.earth {
+  width: 145px;
+  height: 145px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 75px;
+  background: radial-gradient(circle at 35% 30%, #a9dca0, #40895b 55%, #16452e);
+  box-shadow: 0 0 35px #75a87b55;
+  transition: 0.4s;
+}
+
+.earth.sustainable {
+  background: radial-gradient(circle at 35% 30%, #b8e8a9, #368a52 55%, #16452e);
+}
+
+.earth.mixed {
+  background: radial-gradient(circle at 35% 30%, #d6ce87, #8d9954 55%, #53603b);
+}
+
+.earth.high {
+  background: radial-gradient(circle at 35% 30%, #d1a26e, #99724e 55%, #553d35);
+}
+
+.result h3 {
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+.result-description {
+  color: #647568;
+  max-width: 650px;
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.impact {
+  background: #f5f7f1;
+  padding: 20px;
+  border-radius: 9px;
+}
+
+.impact h4 {
+  margin-bottom: 7px;
+  color: #286348;
+}
+
+.impact p {
+  color: #647568;
+  font-size: 14px;
+}
+
+.timeline {
+  margin: 65px 0;
+}
+
+.timeline-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.time-card {
+  background: white;
+  padding: 28px;
+  border-radius: 10px;
+  border-top: 4px solid #548466;
+}
+
+.time-card h3 {
+  font-size: 27px;
+  margin-bottom: 12px;
+}
+
+.time-card p {
+  color: #647568;
+}
+
+.warning {
+  background: #e5eddf;
+  padding: 25px;
+  border-left: 5px solid #548466;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+
+.action-section {
+  background: #123c2b;
+  color: white;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.action-section p {
+  color: #dce8dc;
+  margin: 15px auto;
+  max-width: 650px;
+}
+
+.action-section a {
+  display: inline-block;
+  background: #c4dfae;
+  color: #173c2a;
+  padding: 13px 22px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+footer {
+  background: #123c2b;
+  color: white;
+  text-align: center;
+  padding: 30px;
+  font-size: 13px;
+}
+
+footer p {
+  color: #dce8dc;
+}
+
+@media(max-width: 650px) {
+  header {
+    justify-content: center;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .scenario-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .impact-grid,
+  .timeline-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .result {
+    padding: 22px;
+  }
+
+  .result-header {
+    justify-content: center;
+    text-align: center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🌍 THE CLIMATE PROJECT</div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="understanding.html">The Science</a>
+    <a href="future.html">Earth's Future</a>
+    <a href="world.html">Our World</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="about.html">About</a>
+    <a href="sources.html">Sources</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <small>IMAGINE WHAT COMES NEXT</small>
+  <h1>Earth in the Future</h1>
+  <p>
+    What could our planet look like in the coming decades?
+    Explore three possible climate futures and discover
+    how the choices we make today can shape tomorrow.
+  </p>
+</section>
+
+<main>
+
+<section class="intro">
+  <div class="section-label">THE FUTURE IS NOT SET</div>
+  <h2>Three Possible Futures</h2>
+  <p>
+    The future of our planet depends partly on the amount
+    of greenhouse gases released into the atmosphere.
+    Scientists use different emissions scenarios to
+    explore what could happen.
+    
+    Choose a future below to explore the possibilities.
+  </p>
+</section>
+
+<section class="scenario-section">
+
+  <div class="section-label">01 — CHOOSE YOUR SCENARIO</div>
+  <h2>Which future will we create?</h2>
+
+  <div class="scenario-buttons">
+
+    <button class="scenario-button active"
+      data-scenario="sustainable"
+      aria-pressed="true">
+      <span>🌱</span>
+      Sustainable Future
+    </button>
+
+    <button class="scenario-button"
+      data-scenario="mixed"
+      aria-pressed="false">
+      <span>🌍</span>
+      Uneven Progress
+    </button>
+
+    <button class="scenario-button"
+      data-scenario="high"
+      aria-pressed="false">
+      <span>🔥</span>
+      High-Warming Future
+    </button>
+
+  </div>
+
+  <div class="result" aria-live="polite">
+
+    <div class="result-header">
+
+      <div>
+        <div class="section-label">YOUR SELECTED FUTURE</div>
+        <h3 id="scenario-title">A Sustainable Future</h3>
+        <p class="result-description" id="scenario-description">
+          Countries work together to reduce greenhouse gas
+          emissions, protect forests and transition towards
+          cleaner energy.
+        </p>
+      </div>
+
+      <div class="earth sustainable" id="earth">
+        🌍
+      </div>
+
+    </div>
+
+    <div class="impact-grid">
+
+      <div class="impact">
+        <h4>🌡️ Temperature</h4>
+        <p id="temperature">
+          Global warming is limited compared with
+          higher-emissions pathways.
+        </p>
+      </div>
+
+      <div class="impact">
+        <h4>🌊 Oceans</h4>
+        <p id="oceans">
+          Sea levels continue to rise, but the amount
+          of additional warming is reduced.
+        </p>
+      </div>
+
+      <div class="impact">
+        <h4>🐾 Wildlife</h4>
+        <p id="wildlife">
+          Stronger conservation efforts help protect
+          habitats and biodiversity.
+        </p>
+      </div>
+
+      <div class="impact">
+        <h4>🌳 Environment</h4>
+        <p id="environment">
+          Forest protection and ecosystem restoration
+          become important priorities.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="timeline">
+
+  <div class="section-label">02 — LOOKING AHEAD</div>
+  <h2>What might the future look like?</h2>
+
+  <p>
+    Climate change happens over decades. Here are two
+    important time horizons scientists use when
+    studying possible future conditions.
+  </p>
+
+  <div class="timeline-grid">
+
+    <div class="time-card">
+      <h3>2050</h3>
+      <p>
+        By the middle of the century, choices about energy,
+        transportation, land use and emissions will have
+        influenced the climate. Communities will also need
+        to adapt to changes already underway.
+      </p>
+    </div>
+
+    <div class="time-card">
+      <h3>2100</h3>
+      <p>
+        By the end of the century, differences between
+        lower-emissions and higher-emissions pathways
+        could become much more significant, affecting
+        ecosystems, oceans and human communities.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section>
+
+  <div class="section-label">03 — AN IMPORTANT REMINDER</div>
+  <h2>Is the future already decided?</h2>
+
+  <p>
+    No. These scenarios are not predictions of exactly
+    what will happen. They are ways scientists explore
+    possible outcomes under different assumptions about
+    future greenhouse gas emissions.
+  </p>
+
+  <div class="warning">
+    <h3>Our choices matter.</h3>
+    <p>
+      Reducing emissions can limit future warming.
+      Preparing communities and protecting nature can
+      also reduce the risks and impacts of climate change.
+      The future is influenced by decisions made today.
+    </p>
+  </div>
+
+</section>
+
+<section class="action-section">
+  <h2>Be Part of the Future</h2>
+
+  <p>
+    The future of Earth isn't just something we wait for.
+    It is something we help shape through the choices
+    we make, the policies we support and the actions
+    we take together.
+  </p>
+
+  <a href="world.html">Explore Climate Change Around the World →</a>
+</section>
+
+<section>
+  <div class="section-label">04 — LEARN MORE</div>
+  <h2>Explore the Science</h2>
+  <p>
+    These scenarios are based on the scientific approach
+    used in climate research. Learn more about future
+    emissions pathways and climate projections through
+    the Intergovernmental Panel on Climate Change.
+  </p>
+
+  <p>
+    <a href="https://www.ipcc.ch/report/ar6/syr/"
+       target="_blank" rel="noopener noreferrer"
+       style="color:#286348;font-weight:bold;">
+       Read the IPCC Sixth Assessment Synthesis Report →
+    </a>
+  </p>
+</section>
+
+</main>
+
+<footer>
+  <p><strong>THE CLIMATE PROJECT</strong></p>
+  <p>Our planet. Our future. Our choice.</p>
+  <p><a href="index.html" style="color:#b9dda7;">Back to Home</a></p>
+</footer>
+
+<script>
+
+const scenarios = {
+
+  sustainable: {
+    title: "A Sustainable Future",
+    description:
+      "Countries work together to reduce greenhouse gas emissions, protect forests and transition towards cleaner energy.",
+    temperature:
+      "Global warming is limited compared with higher-emissions pathways.",
+    oceans:
+      "Sea levels continue to rise, but the amount of additional warming is reduced.",
+    wildlife:
+      "Stronger conservation efforts help protect habitats and biodiversity.",
+    environment:
+      "Forest protection and ecosystem restoration become important priorities."
+  },
+
+  mixed: {
+    title: "A Future of Uneven Progress",
+    description:
+      "Some countries make significant climate progress, while others continue to depend heavily on fossil fuels.",
+    temperature:
+      "Global temperatures continue to rise, although stronger action in some regions helps limit emissions.",
+    oceans:
+      "Sea levels continue rising, increasing risks for many coastal communities.",
+    wildlife:
+      "Many species face changing habitats and increasing pressure on ecosystems.",
+    environment:
+      "Some environmental improvements happen, but climate risks remain significant."
+  },
+
+  high: {
+    title: "A High-Warming Future",
+    description:
+      "Greenhouse gas emissions remain high for a long period, leading to much greater climate risks.",
+    temperature:
+      "Global warming becomes considerably greater than in lower-emissions scenarios.",
+    oceans:
+      "Higher warming contributes to greater sea-level rise and coastal risks.",
+    wildlife:
+      "More ecosystems face serious stress, increasing risks to biodiversity.",
+    environment:
+      "Heat extremes, changing rainfall and other climate impacts become more challenging."
+  }
+
+};
+
+const buttons = document.querySelectorAll(".scenario-button");
+
+function selectScenario(name) {
+
+  const scenario = scenarios[name];
+
+  document.getElementById("scenario-title").textContent =
+    scenario.title;
+
+  document.getElementById("scenario-description").textContent =
+    scenario.description;
+
+  document.getElementById("temperature").textContent =
+    scenario.temperature;
+
+  document.getElementById("oceans").textContent =
+    scenario.oceans;
+
+  document.getElementById("wildlife").textContent =
+    scenario.wildlife;
+
+  document.getElementById("environment").textContent =
+    scenario.environment;
+
+  const earth = document.getElementById("earth");
+
+  earth.className = "earth " + name;
+
+  buttons.forEach(button => {
+
+    const selected = button.dataset.scenario === name;
+
+    button.classList.toggle("active", selected);
+
+    button.setAttribute("aria-pressed", selected);
+
+  });
+
+}
+
+buttons.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    selectScenario(button.dataset.scenario);
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>
+
